@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOS AÑOS DORADOS — Michael Schumacher: El Kaiser de Ferrari</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --black: #0A0A0A;
+  --black-mid: #141414;
+  --black-card: #1C1C1C;
+  --red: #CC0000;
+  --red-bright: #FF1801;
+  --gold: #C9A84C;
+  --gold-light: #E8C96C;
+  --white: #F2F2F2;
+  --grey: #888;
+  --grey-light: #BABABA;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+/* ─── PROGRESS CAR ─── */
+#progress-car {
+  position: fixed;
+  right: 18px;
+  top: 0;
+  width: 32px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  pointer-events: none;
+}
+#progress-track {
+  width: 2px;
+  height: 100%;
+  background: rgba(200,168,76,0.15);
+  position: relative;
+  border-radius: 2px;
+}
+#progress-fill {
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--gold), var(--red));
+  border-radius: 2px;
+  transition: height 0.1s linear;
+  position: absolute;
+  top: 0;
+}
+#car-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  transition: top 0.1s linear;
+  top: 0;
+  filter: drop-shadow(0 0 6px var(--red));
+}
+
+/* ─── NAV DOTS ─── */
+#nav-dots {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(200,168,76,0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.nav-dot.active { background: var(--gold); transform: scale(1.5); }
+.nav-dot:hover { background: var(--gold-light); }
+.nav-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.nav-dot:hover::after, .nav-dot.active::after { opacity: 1; }
+
+/* ─── TOP NAV ─── */
+#topnav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  padding: 16px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+  transition: background 0.3s;
+}
+#topnav .logo {
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+#topnav .logo span { color: var(--red); }
+.year-nav {
+  display: flex;
+  gap: 24px;
+}
+.year-nav a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--grey);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+.year-nav a:hover { color: var(--gold); }
+
+/* ─── SPEED LINES ─── */
+.speed-lines {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.06;
+}
+.speed-lines span {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--white), transparent);
+  animation: speedLine 1.5s infinite linear;
+}
+
+@keyframes speedLine {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  flex-direction: column;
+  padding: 124px 80px 64px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  height: 100vh;           /* Opcional: toma toda la altura de la pantalla */
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.96) 100%);
+  z-index: 0;
+}
+
+/* PLACEHOLDER para video/imagen hero */
+.hero-media-placeholder {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 70% 40%, rgba(204,0,0,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.08) 0%, transparent 50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-media-placeholder .media-box {
+  width: 55%;
+  height: 70%;
+  border: 1px dashed rgba(201,168,76,0.2);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(201,168,76,0.3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2px;
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.media-box .icon { font-size: 40px; opacity: 0.5; }
+
+/* Decorative red stripe */
+.hero-stripe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(to bottom, transparent, var(--red) 30%, var(--gold) 70%, transparent);
+  z-index: 3;
+}
+
+.hero-content { position: relative; z-index: 3; max-width: 1000px; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--red);
+}
+
+.hero-title {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  letter-spacing: 87px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.hero-title .gold {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: clamp(128px, 20vw, 256px);
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.hero-title .red { color: var(--red); }
+
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 3vw, 32px);
+  color: var(--grey-light);
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle .red { color: var(--red); }
+
+.hero-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--grey-light);
+  max-width: 740px;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 210px;
+  margin-bottom: 0;
+}
+.metric {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.metric .number {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1;
+  color: var(--gold);
+}
+.metric .number.red { color: var(--red); }
+.metric .label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--grey);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--grey);
+  animation: bounce 2s infinite;
+}
+.scroll-wheel {
+  width: 22px;
+  height: 36px;
+  border: 1.5px solid var(--grey);
+  border-radius: 11px;
+  position: relative;
+}
+.scroll-wheel::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: scrollDot 2s infinite;
+}
+
+@keyframes scrollDot {
+  0% { top: 6px; opacity: 1; }
+  80% { top: 20px; opacity: 0; }
+  100% { top: 6px; opacity: 0; }
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ─── SECTION COMMON ─── */
+section { position: relative; }
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+/* ─── INTRO ─── */
+#intro {
+  padding: 100px 80px;
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.intro-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--grey-light);
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.intro-text p strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* Timeline intro */
+.timeline-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.timeline-intro::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--red), var(--gold));
+}
+.tl-item {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 32px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.5s;
+}
+.tl-item.visible { opacity: 1; transform: translateX(0); }
+.tl-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--black-card);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.tl-content {
+  padding-top: 8px;
+}
+.tl-year {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--grey-light);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.tl-desc em { color: var(--red); font-style: normal; }
+
+/* ─── CHAPTER WRAPPER ─── */
+#chapters { background: var(--black); }
+
+/* ─── STICKY YEAR CHAPTER ─── */
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.chapter-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 60px 60px 80px;
+  overflow: hidden;
+}
+
+.chapter-year-bg {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 300px;
+  color: rgba(255,255,255,0.02);
+  bottom: -40px;
+  left: -20px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.chapter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  padding: 4px 12px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--white);
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.chapter-year {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 12vw, 140px);
+  line-height: 0.9;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.chapter-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 28px);
+  color: var(--white);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.chapter-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--grey-light);
+  font-weight: 300;
+  max-width: 380px;
+  margin-bottom: 32px;
+}
+
+/* Stats pills */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-pill {
+  background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stat-pill .s-val {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-pill .s-val.red { color: var(--red); }
+.stat-pill .s-key {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--grey);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Race pills */
+.race-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.race-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  cursor: default;
+  transition: transform 0.2s;
+}
+.race-pill:hover { transform: scale(1.2); }
+.race-pill.p1 { background: var(--gold); color: var(--black); }
+.race-pill.p2 { background: #C0C0C0; color: var(--black); }
+.race-pill.p3 { background: #CD7F32; color: var(--black); }
+.race-pill.dnf { background: rgba(204,0,0,0.2); color: var(--red); border: 1px solid rgba(204,0,0,0.3); }
+.race-pill.other { background: rgba(255,255,255,0.06); color: var(--grey); border: 1px solid rgba(255,255,255,0.08); }
+.race-pill.label {
+  width: auto;
+  padding: 0 8px;
+  background: none;
+  color: var(--grey);
+  font-size: 9px;
+  letter-spacing: 1px;
+  cursor: default;
+}
+
+/* Right content panel */
+.chapter-content {
+  padding: 80px 80px 80px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Content cards */
+.content-card {
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 24px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.content-card.visible { opacity: 1; transform: translateY(0); }
+.content-card:nth-child(2) { transition-delay: 0.1s; }
+.content-card:nth-child(3) { transition-delay: 0.2s; }
+.content-card:nth-child(4) { transition-delay: 0.3s; }
+.content-card:nth-child(5) { transition-delay: 0.4s; }
+
+.card-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-label::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--red);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--grey-light);
+  font-weight: 300;
+}
+
+/* Media placeholder */
+.media-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 1px dashed rgba(201,168,76,0.2);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(201,168,76,0.3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  background: rgba(201,168,76,0.02);
+  margin-top: 8px;
+}
+.media-placeholder .icon { font-size: 28px; opacity: 0.5; }
+
+/* Quote */
+.quote-card {
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  background: rgba(201,168,76,0.04);
+  border-radius: 0 6px 6px 0;
+}
+.quote-text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.quote-attr {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  letter-spacing: 2px;
+}
+
+/* Audio player placeholder */
+.audio-player {
+  background: var(--black-card);
+  border: 1px solid rgba(204,0,0,0.3);
+  border-radius: 6px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--red);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(204,0,0,0.3);
+}
+.play-btn:hover { background: var(--red-bright); box-shadow: 0 0 30px rgba(255,24,1,0.4); }
+.audio-info { flex: 1; }
+.audio-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+}
+.audio-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+}
+.audio-waveform {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 32px;
+}
+.audio-waveform span {
+  display: block;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--red);
+  animation: waveAnim 0.8s ease-in-out infinite alternate;
+}
+.audio-waveform span:nth-child(1) { height: 8px; animation-delay: 0s; }
+.audio-waveform span:nth-child(2) { height: 20px; animation-delay: 0.1s; }
+.audio-waveform span:nth-child(3) { height: 14px; animation-delay: 0.2s; }
+.audio-waveform span:nth-child(4) { height: 28px; animation-delay: 0.3s; }
+.audio-waveform span:nth-child(5) { height: 12px; animation-delay: 0.4s; }
+.audio-waveform span:nth-child(6) { height: 24px; animation-delay: 0.15s; }
+.audio-waveform span:nth-child(7) { height: 18px; animation-delay: 0.25s; }
+.audio-waveform span:nth-child(8) { height: 10px; animation-delay: 0.35s; }
+
+@keyframes waveAnim {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* Bar chart */
+.bar-chart { display: flex; flex-direction: column; gap: 10px; }
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.bar-label { width: 40px; color: var(--grey); text-align: right; }
+.bar-track { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(to right, var(--red), var(--gold));
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bar-val { width: 28px; color: var(--gold); font-weight: 700; font-size: 12px; }
+
+/* Data table */
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px;
+}
+.data-row:last-child { border-bottom: none; }
+.data-row .key { color: var(--grey); }
+.data-row .val { color: var(--gold); font-family: var(--font-mono); font-weight: 700; }
+.data-row .val.red { color: var(--red); }
+.data-row .val.white { color: var(--white); }
+
+/* Curiosity box */
+.curiosity-box {
+  background: rgba(201,168,76,0.04);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+.curiosity-box .c-icon {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.curiosity-text {
+  font-size: 13px;
+  color: var(--grey-light);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.curiosity-text strong { color: var(--gold); }
+
+/* ─── VIZ SECTION ─── */
+#visualizations {
+  padding: 100px 80px;
+  background: var(--black-mid);
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+
+.viz-card {
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 28px;
+}
+.viz-card.full { grid-column: 1 / -1; }
+
+.viz-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.viz-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+/* Victories chart */
+.victories-chart { display: flex; align-items: flex-end; gap: 16px; height: 160px; }
+.vc-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; }
+.vc-bar {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  transition: height 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.vc-bar.active { background: linear-gradient(to top, var(--red), var(--gold)); }
+.vc-bar.inactive { background: rgba(255,255,255,0.08); }
+.vc-val {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.vc-year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+}
+
+/* World map placeholder */
+.map-placeholder {
+  width: 100%;
+  height: 300px;
+  border: 1px dashed rgba(201,168,76,0.2);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(201,168,76,0.3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  background: rgba(201,168,76,0.02);
+  position: relative;
+  overflow: hidden;
+}
+.map-placeholder .icon { font-size: 40px; opacity: 0.4; }
+
+/* Points line chart */
+.line-chart-wrap { position: relative; height: 160px; }
+.line-chart-svg { width: 100%; height: 100%; }
+
+/* Chart race placeholder */
+.chart-race-placeholder {
+  height: 200px;
+  border: 1px dashed rgba(201,168,76,0.2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: rgba(201,168,76,0.3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  flex-direction: column;
+}
+.chart-race-placeholder .icon { font-size: 36px; opacity: 0.4; }
+
+/* ─── GOAT SECTION ─── */
+#goat {
+  padding: 120px 80px;
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.goat-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 60%);
+}
+
+.goat-header { text-align: center; margin-bottom: 80px; position: relative; z-index: 1; }
+
+.goat-crown { font-size: 64px; margin-bottom: 16px; }
+
+.goat-title {
+  font-family: var(--font-display);
+  font-size: clamp(60px, 10vw, 120px);
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.goat-title .accent { color: var(--gold); }
+
+.goat-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--grey);
+  letter-spacing: 4px;
+}
+
+/* Totals row */
+.goat-totals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.goat-stat {
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--black-card);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.goat-stat::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--red), var(--gold));
+}
+.goat-stat .gs-num {
+  font-family: var(--font-display);
+  font-size: 72px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.goat-stat .gs-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Comparison */
+.comparison-section {
+  max-width: 1000px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.comparison-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.comparison-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comp-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 60px;
+  align-items: center;
+  gap: 16px;
+}
+.comp-name { font-size: 13px; color: var(--grey-light); font-weight: 500; }
+.comp-name.schumi { color: var(--gold); font-weight: 700; }
+.comp-bar-track { height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; }
+.comp-bar-fill { height: 100%; border-radius: 5px; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1); width: 0%; }
+.comp-bar-fill.schumi { background: linear-gradient(to right, var(--red), var(--gold)); }
+.comp-bar-fill.other { background: rgba(255,255,255,0.2); }
+.comp-val { font-family: var(--font-mono); font-size: 12px; color: var(--grey); font-weight: 700; text-align: right; }
+.comp-val.schumi { color: var(--gold); }
+
+/* Final question */
+.final-question {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.fq-text {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 52px);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+.fq-text .q { color: var(--gold); }
+.fq-reflection {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--grey-light);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.fq-reflection strong { color: var(--white); }
+.fq-rule {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 32px auto;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: #080808;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 60px 80px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand .fb-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.footer-brand .fb-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--grey);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.footer-brand p {
+  font-size: 12px;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--red);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li {
+  font-size: 12px;
+  color: var(--grey);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.footer-col ul li strong { color: var(--grey-light); }
+.footer-col ul li em { color: rgba(201,168,76,0.6); font-style: normal; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--grey);
+  letter-spacing: 1px;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 4px;
+  color: rgba(201,168,76,0.3);
+}
+
+/* ─── DIVIDER ─── */
+.divider-red {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--red) 20%, var(--gold) 50%, var(--red) 80%, transparent);
+  opacity: 0.4;
+}
+
+/* ─── UTILS ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-gold { color: var(--gold); }
+.text-red { color: var(--red); }
+
+/* ─── RESPONSIVE HINTS ─── */
+@media (max-width: 900px) {
+  .chapter { grid-template-columns: 1fr; }
+  .chapter-sticky { position: relative; height: auto; min-height: 50vh; }
+  #topnav { padding: 12px 24px; }
+  .year-nav { display: none; }
+  #hero { padding: 100px 24px 48px; }
+  #intro { padding: 0; }
+  .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+  .chapter-sticky { padding: 40px 24px; }
+  .chapter-content { padding: 40px 24px; }
+  #visualizations { padding: 60px 24px; }
+  .viz-grid { grid-template-columns: 1fr; }
+  #goat { padding: 80px 24px; }
+  .goat-totals { grid-template-columns: repeat(2, 1fr); }
+  footer { padding: 40px 24px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  #nav-dots, #progress-car { display: none; }
+}
+
+/* ─── TRANSITIONS BETWEEN CHAPTERS ─── */
+.chapter-separator {
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--red) 30%, var(--gold) 50%, var(--red) 70%, transparent);
+  opacity: 0.3;
+}
+
+/* Sticky year label on right while scrolling */
+.year-marker {
+  position: sticky;
+  top: 48%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Red starting lights decoration */
+.starting-lights {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.light {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red);
+  animation: lightPulse 2s ease-in-out infinite;
+}
+.light:nth-child(2) { animation-delay: 0.2s; }
+.light:nth-child(3) { animation-delay: 0.4s; }
+.light:nth-child(4) { animation-delay: 0.6s; }
+.light:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes lightPulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ══════════════════ HERO VIDEO + ESCUDO FERRARI ══════════════════ */
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(50%)
+}
+#hero .hero-bg { z-index: 1; }      /* gradiente oscurecedor por encima del video */
+#hero .speed-lines { z-index: 2; }
+
+.metric-logo { align-items: center; }
+.ferrari-emblem {
+  width: 62px; height: 62px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; overflow: hidden; position: relative;
+}
+.ferrari-emblem img { width: 100%; height: 100%; object-fit: contain; }
+/* Placeholder SOLO si assets/ferrari-logo.png no carga */
+.ferrari-emblem.is-fallback {
+  background: linear-gradient(180deg, #f6c700 0%, #e6b300 100%);
+  box-shadow: 0 0 20px rgba(246,199,0,0.25);
+}
+.ferrari-emblem.is-fallback img { display: none; }
+.ferrari-emblem.is-fallback::before {            /* franja tricolor italiana (no es marca registrada) */
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 8px;
+  background: linear-gradient(to right, #008c45 33.3%, #ffffff 33.3% 66.6%, #cd212a 66.6%);
+}
+.ferrari-emblem.is-fallback::after {
+  content: 'SF'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -40%);
+  font-family: var(--font-display); font-size: 28px; letter-spacing: 1px; color: #141414;
+}
+
+/* ══════════════════ ACTO 1 · EL PESO DE LA SEQUÍA ══════════════════ */
+#intro { padding: 0; background: #060606; border-top: 1px solid rgba(201,168,76,0.1); }
+
+.drought-track { position: relative; height: 640vh; }
+.drought-stage {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 70px 24px 180px;
+}
+.drought-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(ellipse at 50% 45%, #2a0202 0%, #060606 80%);
+  transition: background 0.7s ease;
+}
+.drought-vignette {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.88) 100%);
+}
+.drought-inner { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
+.drought-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 5px;
+  color: var(--grey); margin-bottom: 18px; text-transform: uppercase;
+}
+.drought-year {
+  font-family: var(--font-display);
+  font-size: clamp(86px, 18vw, 220px); line-height: 0.82; letter-spacing: 2px;
+  color: var(--white); text-shadow: 0 0 60px rgba(0,0,0,0.6);
+}
+.drought-team {
+  font-family: var(--font-mono); font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 4px; margin-top: 14px; color: var(--gold);
+  transition: color 0.5s ease;
+}
+.drought-phrase {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.2vw, 40px); letter-spacing: 1px;
+  color: var(--white); margin-top: 22px; min-height: 1.2em; opacity: 0;
+  max-width: 900px;
+}
+.drought-phrase.flash { animation: droughtFlash 0.9s ease forwards; }
+@keyframes droughtFlash {
+  0%   { opacity: 0; transform: translateY(10px); }
+  18%  { opacity: 1; transform: translateY(0); }
+  85%  { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+.drought-phrase.memoriam { color: var(--gold); font-style: italic; }
+
+.drought-strip {
+  position: absolute; bottom: 92px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; gap: 4px; width: min(700px, 82vw);
+}
+.strip-cell {
+  flex: 1; height: 14px; border-radius: 2px;
+  opacity: 0.1; transform: scaleY(0.45); transform-origin: bottom;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.strip-cell.filled { opacity: 1; transform: scaleY(1); }
+.drought-legend {
+  position: absolute; bottom: 52px; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: var(--grey);
+}
+.drought-legend i {
+  display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+  margin-right: 5px; vertical-align: middle;
+}
+
+.drought-blackout {
+  position: absolute; inset: 0; z-index: 5; background: #000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 36px; padding: 0 24px; text-align: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.6s ease;
+}
+.drought-blackout.show { opacity: 1; }
+.blackout-count {
+  display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; color: var(--grey);
+  text-transform: uppercase;
+}
+.blackout-count b {
+  display: block; font-family: var(--font-display); font-size: 48px;
+  color: var(--white); letter-spacing: 1px; margin-bottom: 4px;
+}
+.blackout-count .zero b { color: var(--red); }
+.blackout-note {
+  font-family: var(--font-body); font-size: 13px; font-weight: 300;
+  color: var(--grey-light); max-width: 480px; line-height: 1.7;
+}
+.blackout-line {
+  font-family: var(--font-display); font-size: clamp(44px, 8vw, 112px);
+  color: var(--red); letter-spacing: 2px; text-shadow: 0 0 40px rgba(204,0,0,0.4);
+}
+
+/* ══════════════════ ACTO 2 · LOS FANTASMAS ANTES DE LA GLORIA ══════════════════ */
+.ghosts-track { position: relative; height: 540vh; background: #000; }
+.ghosts-stage {
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.ghosts-video {
+  position: absolute; 
+  inset: 0; 
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; 
+  z-index: 0;
+  filter: grayscale(0.6) contrast(1.05) brightness(0.5);
+  
+  /* ◄ AGREGÁ ESTO SOLO SI EL TIP DE ARRIBA NO BASTÓ: */
+  transform: scale(1.34); /* Hace un leve zoom para recortar los bordes negros */
+}
+.ghosts-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.92)),
+    radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%);
+}
+.ghosts-eyebrow {
+  position: absolute; top: 100px; left: 50%; transform: translateX(-50%);
+  z-index: 3; font-family: var(--font-mono); font-size: 11px; letter-spacing: 5px;
+  color: var(--gold); text-transform: uppercase; text-align: center; white-space: nowrap;
+}
+.ghosts-lines { position: absolute; inset: 0; z-index: 2; }
+.ghost-line {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -42%); width: 90%; max-width: 1000px; text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 104px); line-height: 1.02; letter-spacing: 1px;
+  color: var(--white); text-shadow: 0 4px 40px rgba(0,0,0,0.85);
+  opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.ghost-line.active { opacity: 1; transform: translate(-50%, -50%); }
+.ghost-final span { color: var(--red); display: inline-block; margin-top: 6px; }
+
+@media (max-width: 900px) {
+  .drought-track { height: 500vh; }
+  .ghosts-track { height: 440vh; }
+  .drought-strip { bottom: 78px; }
+  .drought-legend { bottom: 44px; gap: 12px; }
+  .blackout-count { gap: 22px; }
+  .blackout-count b { font-size: 36px; }
+  .ghosts-eyebrow { white-space: normal; width: 80%; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── PROGRESS CAR ─── -->
+<div id="progress-car">
+  <div id="progress-track">
+    <div id="progress-fill"></div>
+    <div id="car-icon">🏎</div>
+  </div>
+</div>
+
+<!-- ─── TOP NAV ─── -->
+<nav id="topnav">
+  <div class="logo"><span>FERRARI</span> × SCHUMACHER</div>
+  <div class="year-nav">
+    <a href="#hero">INICIO</a>
+    <a href="#intro">CONTEXTO</a>
+    <a href="#year-2000">2000</a>
+    <a href="#year-2001">2001</a>
+    <a href="#year-2002">2002</a>
+    <a href="#year-2003">2003</a>
+    <a href="#year-2004">2004</a>
+    <a href="#goat">EL LEGADO</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HERO                                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="hero">
+  <!-- VIDEO DE FONDO DEL HERO (ver instrucciones: poné tu archivo en assets/hero.mp4) -->
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  
+  <!-- Speed lines -->
+  <div class="speed-lines" id="speedLines"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <div style="margin-left: 7px;">LOS AÑOS<br></div>
+      <span class="gold">DORADOS</span>
+    </h1>
+
+    <div class="hero-subtitle">Michael Schumacher: El Kaiser de <span class="red">Ferrari</span></div>
+
+    <p class="hero-desc">
+      Entre 2000 y 2004, Michael Schumacher y Ferrari construyeron una de las dinastías más impresionantes de la historia del deporte.
+    </p>
+
+    <div class="hero-metrics">
+      <div class="metric">
+        <span class="number">5</span>
+        <span class="label">Campeonatos<br>consecutivos</span>
+      </div>
+      <div class="metric">
+        <span class="number red">48</span>
+        <span class="label">Victorias<br>en el período</span>
+      </div>
+      <div class="metric metric-logo">
+        <span class="ferrari-emblem">
+          <img src="assets/ferrari-logo.png" alt="Escudo Ferrari" onerror="this.parentElement.classList.add('is-fallback')">
+        </span>
+        <span class="label">Dominio<br>absoluto Ferrari</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-red"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- INTRO / CONTEXTO                                        -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="intro">
+
+  <!-- ════════════════ ACTO 1 · EL PESO DE LA SEQUÍA ════════════════ -->
+  <div class="drought" id="drought">
+    <div class="drought-track">
+      <div class="drought-stage">
+        <div class="drought-bg" id="droughtBg"></div>
+        <div class="drought-vignette"></div>
+
+        <div class="drought-inner">
+          <div class="drought-eyebrow">El contexto · 21 años de sequía</div>
+          <div class="drought-year" id="droughtYear">1979</div>
+          <div class="drought-team" id="droughtTeam">FERRARI — CAMPEÓN</div>
+          <div class="drought-phrase" id="droughtPhrase"></div>
+        </div>
+
+        <!-- Tira de datos: un año por celda, color = escudería campeona de pilotos -->
+        <div class="drought-strip" id="droughtStrip" aria-hidden="true"></div>
+        <div class="drought-legend">
+          <span><i style="background:#ff1801"></i> Ferrari</span>
+          <span><i style="background:#1746c4"></i> Williams</span>
+          <span><i style="background:#dcdcdc"></i> McLaren</span>
+          <span><i style="background:#1f9e6b"></i> Benetton</span>
+          <span><i style="background:#5b6b86"></i> Brabham</span>
+        </div>
+
+        <!-- Pantalla negra final -->
+        <div class="drought-blackout" id="droughtBlackout">
+          <div class="blackout-count">
+            <span><b>9</b>McLaren</span>
+            <span><b>7</b>Williams</span>
+            <span><b>4</b>otros</span>
+            <span class="zero"><b>0</b>Ferrari</span>
+          </div>
+          <div class="blackout-note">20 años. Cuatro escuderías repartiéndose la gloria. Ningún título para Maranello.</div>
+          <div class="blackout-line">Hasta que llegó él.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ ACTO 2 · LOS FANTASMAS ANTES DE LA GLORIA ════════════════ -->
+  <div class="ghosts" id="ghosts">
+    <div class="ghosts-track">
+      <div class="ghosts-stage">
+        <!-- Video de fondo (poné tu archivo en assets/fantasmas.mp4) -->
+        <video class="ghosts-video" autoplay muted loop playsinline poster="assets/fantasmas-poster.jpg">
+          <source src="assets/fantasmas.mp4" type="video/mp4">
+        </video>
+        <div class="ghosts-overlay"></div>
+        <div class="ghosts-eyebrow">1996 — 1999 · antes de ser leyenda</div>
+
+        <div class="ghosts-lines" id="ghostsLines">
+          <p class="ghost-line" data-step="0">La presión de toda Italia.</p>
+          <p class="ghost-line" data-step="1">Un auto que no estaba a la altura.</p>
+          <p class="ghost-line" data-step="2">Accidentes, polémicas y fracturas.</p>
+          <p class="ghost-line ghost-final" data-step="3">Y de repente,<br><span>el año 2000.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider-red"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CHAPTERS                                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="chapters">
+
+  <!-- ─── 2000 ─── -->
+  <article class="chapter" id="year-2000">
+    <div class="chapter-sticky">
+      <div class="chapter-year-bg">2000</div>
+      
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO I</div>
+      <div class="chapter-year">2000</div>
+      <div class="chapter-tagline">El primer retorno</div>
+      <p class="chapter-desc">
+        Ferrari volvía a coronar a un piloto después de 21 años de sequía. 
+        Schumacher fue implacable en la segunda mitad de la temporada 
+        frente a un Häkkinen en la cima de sus poderes.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">9</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">108</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">9</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">12</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">2</div>
+          <div class="s-key">Abandonos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="card-label">POSICIONES POR CARRERA</div>
+        <div class="race-pills" id="pills-2000">
+          <!-- Se generan con JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter-content">
+      <div class="content-card">
+        <div class="card-label">EL MOMENTO</div>
+        <div class="card-title">Suzuka, la revancha</div>
+        <p class="card-text">
+          El Gran Premio de Japón fue el escenario de la consagración. 
+          Schumacher cruzó la línea de meta y los mecánicos Ferrari 
+          invadieron la pista. El último campeonato de pilotos Ferrari 
+          había sido de Jody Scheckter en 1979.
+        </p>
+        <!-- ESPACIO PARA FOTO/VIDEO DEL GP DE JAPÓN 2000 -->
+        <div class="media-placeholder">
+          <span class="icon">🏆</span>
+          <span>FOTO / VIDEO GP JAPÓN 2000</span>
+          <span style="opacity:0.5; font-size:9px">Podio Suzuka · Reemplazar con &lt;img&gt; o &lt;video&gt;</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">RIVALIDAD</div>
+        <div class="card-title">Schumacher vs Häkkinen</div>
+        <p class="card-text">
+          Mika Häkkinen ganó los dos campeonatos anteriores con McLaren-Mercedes. 
+          En 2000, el duelo fue al límite: 2 puntos separaron a ambos pilotos 
+          en el inicio de temporada, pero Schumacher aceleró en la recta final.
+        </p>
+
+        <!-- ESPACIO PARA GRÁFICO COMPARATIVO DE PUNTOS -->
+        <div class="bar-chart" id="rivalry-chart-2000">
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Schumacher</span>
+            <div class="bar-track"><div class="bar-fill" data-width="82"></div></div>
+            <span class="bar-val">108</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Häkkinen</span>
+            <div class="bar-track"><div class="bar-fill" data-width="70" style="background:linear-gradient(to right,#555,#888)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">89</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Coulthard</span>
+            <div class="bar-track"><div class="bar-fill" data-width="45" style="background:linear-gradient(to right,#444,#666)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">73</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "Esto significa todo para mí. Trabajé toda mi carrera para llegar 
+          a este momento con Ferrari. Este es el equipo con el que soñé ganar."
+        </p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · GP JAPÓN 2000</div>
+        <!-- NOTA: reemplazar con cita real verificada -->
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">DATOS ECONÓMICOS</div>
+        <div class="data-row">
+          <span class="key">Salario estimado (2000)</span>
+          <span class="val">~$50M USD/año</span>
+        </div>
+        <div class="data-row">
+          <span class="key">Contrato con Ferrari</span>
+          <span class="val white">1996–2006</span>
+        </div>
+        <div class="data-row">
+          <span class="key">Valor comercial Ferrari</span>
+          <span class="val">↑ tras el campeonato</span>
+        </div>
+        <!-- ESPACIO PARA DATOS ECONÓMICOS REALES -->
+        <div style="margin-top:12px; padding:8px; background:rgba(201,168,76,0.04); border-radius:4px;">
+          <div class="card-label" style="margin-bottom:4px">⚠ PLACEHOLDER</div>
+          <p style="font-size:11px; color:var(--grey)">Completar con datos económicos reales: salario, bonos, impacto en ventas Ferrari, sponsors.</p>
+        </div>
+      </div>
+
+      <div class="content-card curiosity-box">
+        <div class="c-icon">🔍</div>
+        <p class="curiosity-text">
+          <strong>Dato curioso:</strong> Schumacher ganó el campeonato 2000 en la penúltima fecha, 
+          en Suzuka. Lloró en el coche antes de bajarse. Era la primera vez que 
+          el mundo lo veía mostrar una emoción tan cruda.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2001 ─── -->
+  <article class="chapter" id="year-2001">
+    <div class="chapter-sticky">
+      <div class="chapter-year-bg">2001</div>
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO II</div>
+      <div class="chapter-year">2001</div>
+      <div class="chapter-tagline">La consolidación</div>
+      <p class="chapter-desc">
+        El F2001 fue una máquina diseñada para ganar. Schumacher 
+        dominó con claridad, dejando en claro que 2000 no fue casualidad. 
+        El dominio Ferrari empezaba a dibujarse en el horizonte.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">9</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">123</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">11</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">14</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">3</div>
+          <div class="s-key">Abandonos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="card-label">POSICIONES POR CARRERA</div>
+        <div class="race-pills" id="pills-2001"></div>
+      </div>
+    </div>
+
+    <div class="chapter-content">
+      <div class="content-card">
+        <div class="card-label">EL AUTO</div>
+        <div class="card-title">Ferrari F2001: El monoplaza de la consolidación</div>
+        <p class="card-text">
+          El F2001 fue desarrollado sobre la base del exitoso F1-2000. 
+          Motor V10 650 CV, mejor aerodinámica y confiabilidad excepcional. 
+          Rubenss Barrichello fue el compañero de Schumacher, 
+          cumpliendo su rol de segundo piloto con profesionalismo.
+        </p>
+        <!-- ESPACIO PARA IMAGEN DEL F2001 -->
+        <div class="media-placeholder">
+          <span class="icon">🚗</span>
+          <span>IMAGEN FERRARI F2001</span>
+          <span style="opacity:0.5; font-size:9px">Foto técnica o en pista · Reemplazar con &lt;img&gt;</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">DOMINIO SOBRE EL COMPAÑERO</div>
+        <div class="card-title">Schumacher vs Barrichello</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:90px;text-align:left">Schumacher</span>
+            <div class="bar-track"><div class="bar-fill" data-width="90"></div></div>
+            <span class="bar-val">123</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:90px;text-align:left">Barrichello</span>
+            <div class="bar-track"><div class="bar-fill" data-width="47" style="background:linear-gradient(to right,#444,#666)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">56</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "El F2001 era una bestia. Cuando todo funcionaba, el coche 
+          hacía lo que yo le pedía al milímetro. Era perfecta esa unión."
+        </p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · 2001 (placeholder — verificar cita)</div>
+      </div>
+
+      <div class="content-card curiosity-box">
+        <div class="c-icon">📊</div>
+        <p class="curiosity-text">
+          <strong>Dato:</strong> En 2001 Schumacher ganó el campeonato con cuatro fechas de anticipación, 
+          en el Gran Premio de Hungría. Por entonces ya era el piloto con más 
+          campeonatos en la historia activa de la F1.
+        </p>
+      </div>
+
+      <!-- ESPACIO PARA VIDEO / FOTO ADICIONAL -->
+      <div class="content-card">
+        <div class="card-label">GALERÍA</div>
+        <div class="media-placeholder">
+          <span class="icon">📷</span>
+          <span>GALERÍA DE IMÁGENES 2001</span>
+          <span style="opacity:0.5; font-size:9px">3–4 imágenes de la temporada</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2002 ─── -->
+  <article class="chapter" id="year-2002">
+    <div class="chapter-sticky">
+      <div class="chapter-year-bg">2002</div>
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO III</div>
+      <div class="chapter-year">2002</div>
+      <div class="chapter-tagline">El aplastamiento total</div>
+      <p class="chapter-desc">
+        La temporada más dominante de la historia reciente. 
+        Schumacher terminó en el podio en <em>todas</em> las carreras. 
+        Igualó a Fangio. El mundo no tenía palabras.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">11</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">144</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">7</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">17</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">0</div>
+          <div class="s-key">DNFs</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="card-label">POSICIONES POR CARRERA</div>
+        <div class="race-pills" id="pills-2002"></div>
+      </div>
+    </div>
+
+    <div class="chapter-content">
+      <div class="content-card">
+        <div class="card-label">EL RÉCORD</div>
+        <div class="card-title">En el podio en cada carrera</div>
+        <p class="card-text">
+          Schumacher terminó en los primeros tres puestos en las 17 fechas 
+          del campeonato. Una hazaña sin precedentes en la era moderna. 
+          11 victorias, 5 segundos, 1 tercero: consistencia absoluta.
+        </p>
+        <!-- ESPACIO PARA GRÁFICO DE PODIOS POR CARRERA -->
+        <div class="media-placeholder">
+          <span class="icon">📈</span>
+          <span>GRÁFICO: POSICIONES POR CARRERA 2002</span>
+          <span style="opacity:0.5; font-size:9px">Chart de barras o pills animadas · Completar con D3 o Chart.js</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">IGUALÓ A FANGIO</div>
+        <div class="card-title">5 campeonatos del mundo</div>
+        <p class="card-text">
+          Con el título de 2002, Schumacher alcanzó a Juan Manuel Fangio 
+          como el piloto con más campeonatos en la historia de la F1. 
+          Los grandes títulos de la historia estaban ahora empatados.
+        </p>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left;color:var(--gold)">Schumacher</span>
+            <div class="bar-track"><div class="bar-fill" data-width="71"></div></div>
+            <span class="bar-val">5★</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Fangio</span>
+            <div class="bar-track"><div class="bar-fill" data-width="71" style="background:linear-gradient(to right,#555,#888)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">5★</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "Igualar a Fangio me llena de orgullo y humildad al mismo tiempo. 
+          Él fue el más grande. Intentar continuar su legado 
+          es algo que nunca imaginé de joven."
+        </p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · 2002 (placeholder — verificar cita)</div>
+      </div>
+
+      <div class="content-card curiosity-box">
+        <div class="c-icon">🏁</div>
+        <p class="curiosity-text">
+          <strong>Controversia:</strong> En Austria 2002, Barrichello lideró y fue ordenado a ceder el paso 
+          a Schumacher en la última vuelta. Las órdenes de equipo generaron silbidos del público 
+          y una multa a Ferrari de $1M USD. La FIA luego prohibió las órdenes de equipo.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2003 ─── -->
+  <article class="chapter" id="year-2003">
+    <div class="chapter-sticky">
+      <div class="chapter-year-bg">2003</div>
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO IV</div>
+      <div class="chapter-year">2003</div>
+      <div class="chapter-tagline">El récord histórico</div>
+      <p class="chapter-desc">
+        El año más peleado de la saga. Kimi Räikkönen y Juan Pablo Montoya 
+        desafiaron seriamente el reinado. Schumacher resistió, 
+        y escribió su nombre en la historia definitivamente.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">6</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">93</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">5</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">14</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">2</div>
+          <div class="s-key">DNFs</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="card-label">POSICIONES POR CARRERA</div>
+        <div class="race-pills" id="pills-2003"></div>
+      </div>
+    </div>
+
+    <div class="chapter-content">
+      <div class="content-card">
+        <div class="card-label">LA BATALLA</div>
+        <div class="card-title">Tensión hasta Suzuka</div>
+        <p class="card-text">
+          Räikkönen llegó a las últimas fechas a solo 8 puntos de Schumacher. 
+          El campeonato se definió en la última carrera del año. 
+          La tensión narrativa fue la más intensa del período 2000–2004.
+        </p>
+        <!-- ESPACIO PARA GRÁFICO DE LÍNEAS CON EVOLUCIÓN DE PUNTOS -->
+        <div class="media-placeholder">
+          <span class="icon">📉</span>
+          <span>GRÁFICO DE LÍNEAS: EVOLUCIÓN DE PUNTOS 2003</span>
+          <span style="opacity:0.5; font-size:9px">Comparativa Schumacher vs Räikkönen vs Montoya · D3 / Chart.js</span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">EL RÉCORD</div>
+        <div class="card-title">6 campeonatos: superó a Fangio</div>
+        <p class="card-text">
+          Con el sexto título, Schumacher se convirtió en el piloto con 
+          más campeonatos en la historia de la Fórmula 1, superando 
+          la marca de 5 que compartía con Juan Manuel Fangio desde 2002.
+        </p>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left;color:var(--gold)">Schumacher</span>
+            <div class="bar-track"><div class="bar-fill" data-width="86"></div></div>
+            <span class="bar-val">6★</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Fangio</span>
+            <div class="bar-track"><div class="bar-fill" data-width="71" style="background:linear-gradient(to right,#555,#888)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">5★</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Räikkönen</span>
+            <div class="bar-track"><div class="bar-fill" data-width="63" style="background:rgba(255,255,255,0.1)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">91p</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "Sabíamos que este año sería diferente. El equipo no cedió 
+          ni bajo la mayor presión. Eso me hace más orgulloso 
+          que cualquier dominio."
+        </p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · 2003 (placeholder — verificar cita)</div>
+      </div>
+
+      <div class="content-card curiosity-box">
+        <div class="c-icon">⚡</div>
+        <p class="curiosity-text">
+          <strong>Dato:</strong> En 2003, la FIA modificó el sistema de puntuación, 
+          pasando a puntuar hasta el 8° lugar y reduciendo el peso de las victorias. 
+          Eso hizo la temporada más competitiva. Aun así, Ferrari ganó.
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <div class="chapter-separator"></div>
+
+  <!-- ─── 2004 ─── -->
+  <article class="chapter" id="year-2004">
+    <div class="chapter-sticky">
+      <div class="chapter-year-bg">2004</div>
+
+      <div class="starting-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <div class="chapter-badge">● CAPÍTULO V</div>
+      <div class="chapter-year">2004</div>
+      <div class="chapter-tagline">La última coronación</div>
+      <p class="chapter-desc">
+        Un retorno al dominio de 2002. El F2004, considerado uno de los 
+        monoplazas más rápidos de la historia, llevó a Schumacher 
+        a su séptimo y último campeonato de manera demoledora.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="s-val">13</div>
+          <div class="s-key">Victorias</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">148</div>
+          <div class="s-key">Puntos</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">8</div>
+          <div class="s-key">Poles</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val red">15</div>
+          <div class="s-key">Podios</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">2</div>
+          <div class="s-key">DNFs</div>
+        </div>
+        <div class="stat-pill">
+          <div class="s-val">1°</div>
+          <div class="s-key">Constructores</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px">
+        <div class="card-label">POSICIONES POR CARRERA</div>
+        <div class="race-pills" id="pills-2004"></div>
+      </div>
+    </div>
+
+    <div class="chapter-content">
+      <div class="content-card">
+        <div class="card-label">EL AUTO</div>
+        <div class="card-title">Ferrari F2004: el monoplaza icónico</div>
+        <p class="card-text">
+          El F2004 es considerado uno de los autos de F1 más rápidos y 
+          dominantes jamás construidos. 13 victorias en 18 fechas. 
+          El tiempo de vuelta rápida en clasificación en muchos 
+          circuitos perduró por años.
+        </p>
+        <!-- ESPACIO PARA IMAGEN DEL F2004 -->
+        <div class="media-placeholder">
+          <span class="icon">🚗</span>
+          <span>IMAGEN FERRARI F2004</span>
+          <span style="opacity:0.5; font-size:9px">Foto técnica o en pista · Reemplazar con &lt;img&gt;</span>
+        </div>
+      </div>
+
+      <!-- AUDIO DEL MOTOR V10 -->
+      <div class="content-card">
+        <div class="card-label">SONIDO HISTÓRICO</div>
+        <div class="audio-player">
+          <button class="play-btn" id="audioPlay2004">▶</button>
+          <div class="audio-info">
+            <div class="audio-title">Motor V10 Ferrari F2004</div>
+            <div class="audio-sub">FERRARI · 900+ CV · 19.000 RPM</div>
+          </div>
+          <div class="audio-waveform">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <!-- ESPACIO PARA AUDIO REAL -->
+        <div style="margin-top:12px; padding:8px; background:rgba(201,168,76,0.04); border-radius:4px;">
+          <div class="card-label" style="margin-bottom:4px">⚠ PLACEHOLDER</div>
+          <p style="font-size:11px; color:var(--grey)">Reemplazar con: <code style="color:var(--gold);">&lt;audio id="motor-f2004" src="audio/f2004-v10.mp3"&gt;</code> y conectar al botón #audioPlay2004</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-label">13 DE 18</div>
+        <div class="card-title">Dominio en números</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:90px;text-align:left;color:var(--gold)">Schumacher</span>
+            <div class="bar-track"><div class="bar-fill" data-width="100"></div></div>
+            <span class="bar-val">148</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:90px;text-align:left">Barrichello</span>
+            <div class="bar-track"><div class="bar-fill" data-width="47" style="background:linear-gradient(to right,#444,#666)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">114</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label" style="font-size:10px;width:90px;text-align:left">Button</span>
+            <div class="bar-track"><div class="bar-fill" data-width="34" style="background:rgba(255,255,255,0.08)"></div></div>
+            <span class="bar-val" style="color:var(--grey)">85</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card quote-card">
+        <p class="quote-text">
+          "No quiero que esto termine. Quiero más. 
+          Cada campeonato se siente diferente. 
+          El séptimo se siente como el primero."
+        </p>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · 2004 (placeholder — verificar cita)</div>
+      </div>
+
+      <div class="content-card curiosity-box">
+        <div class="c-icon">🏎</div>
+        <p class="curiosity-text">
+          <strong>El final de una era:</strong> A partir de 2005 la FIA prohibió el cambio de neumáticos 
+          durante la carrera, una medida percibida como diseñada para frenar el dominio Ferrari. 
+          El 2004 fue el canto del cisne de la era dorada.
+        </p>
+      </div>
+    </div>
+  </article>
+
+</div><!-- end #chapters -->
+
+<div class="divider-red"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- VISUALIZACIONES                                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="visualizations">
+  <div class="fade-in" style="max-width:1200px; margin:0 auto;">
+    <div class="section-eyebrow">DATOS Y VISUALIZACIONES</div>
+    <h2 class="section-title">El dominio en perspectiva</h2>
+  </div>
+
+  <div class="viz-grid" style="max-width:1200px; margin:0 auto;">
+    
+    <!-- Victorias por año -->
+    <div class="viz-card fade-in">
+      <div class="viz-label">COMPARATIVA ANUAL</div>
+      <div class="viz-title">Victorias por temporada</div>
+      <div class="victories-chart" id="vic-chart">
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="62%">
+            <span class="vc-val">9</span>
+          </div>
+          <div class="vc-year">2000</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="62%">
+            <span class="vc-val">9</span>
+          </div>
+          <div class="vc-year">2001</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="76%">
+            <span class="vc-val">11</span>
+          </div>
+          <div class="vc-year">2002</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="41%">
+            <span class="vc-val">6</span>
+          </div>
+          <div class="vc-year">2003</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="90%">
+            <span class="vc-val">13</span>
+          </div>
+          <div class="vc-year">2004</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Puntos por año -->
+    <div class="viz-card fade-in">
+      <div class="viz-label">EVOLUCIÓN DE PUNTOS</div>
+      <div class="viz-title">Puntos por temporada</div>
+      <div class="bar-chart" style="margin-top:16px">
+        <div class="bar-row">
+          <span class="bar-label">2000</span>
+          <div class="bar-track"><div class="bar-fill" data-width="73"></div></div>
+          <span class="bar-val">108</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2001</span>
+          <div class="bar-track"><div class="bar-fill" data-width="83"></div></div>
+          <span class="bar-val">123</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2002</span>
+          <div class="bar-track"><div class="bar-fill" data-width="97"></div></div>
+          <span class="bar-val">144</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2003</span>
+          <div class="bar-track"><div class="bar-fill" data-width="63"></div></div>
+          <span class="bar-val">93</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2004</span>
+          <div class="bar-track"><div class="bar-fill" data-width="100"></div></div>
+          <span class="bar-val">148</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mapamundi placeholder -->
+    <div class="viz-card full fade-in">
+      <div class="viz-label">GRANDES PREMIOS 2000–2004</div>
+      <div class="viz-title">El mundo como escenario</div>
+      <div class="map-placeholder">
+        <span class="icon">🗺</span>
+        <span>MAPA MUNDIAL DE GRANDES PREMIOS</span>
+        <span style="opacity:0.5; font-size:9px; text-align:center; max-width:400px">
+          Completar con biblioteca de mapas (Leaflet.js, D3-geo, Mapbox).<br>
+          Pintar circuitos donde Schumacher ganó en rojo · resto en gris.
+        </span>
+      </div>
+    </div>
+
+    <!-- Chart race placeholder -->
+    <div class="viz-card full fade-in">
+      <div class="viz-label">ANIMACIÓN COMPETITIVA</div>
+      <div class="viz-title">Chart Race: Campeonatos acumulados</div>
+      <div class="chart-race-placeholder">
+        <span class="icon">🏎</span>
+        <span>CHART RACE ANIMADO</span>
+        <span style="opacity:0.5; font-size:9px; text-align:center; max-width:400px">
+          Completar con D3.js o Flourish embed.<br>
+          Mostrar acumulación de victorias/puntos carrera a carrera con autitos animados.
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-red"></div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- GOAT                                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section id="goat">
+  <div class="goat-bg"></div>
+
+  <div class="goat-header fade-in">
+    <div class="goat-crown">👑</div>
+    <h2 class="goat-title">¿El <span class="accent">GOAT</span>?</h2>
+    <div class="goat-sub">EL LEGADO DE UNA DINASTÍA · 2000–2004</div>
+  </div>
+
+  <div class="goat-totals">
+    <div class="goat-stat fade-in">
+      <div class="gs-num">5</div>
+      <div class="gs-label">Campeonatos<br>consecutivos</div>
+    </div>
+    <div class="goat-stat fade-in">
+      <div class="gs-num">48</div>
+      <div class="gs-label">Victorias<br>en el período</div>
+    </div>
+    <div class="goat-stat fade-in">
+      <div class="gs-num">616</div>
+      <div class="gs-label">Puntos<br>acumulados</div>
+    </div>
+    <div class="goat-stat fade-in">
+      <div class="gs-num">7</div>
+      <div class="gs-label">Campeonatos<br>en carrera total</div>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="comparison-section fade-in">
+    <div class="comparison-title">Campeonatos mundiales: los más grandes</div>
+    <div class="comparison-grid">
+      <div class="comp-row">
+        <div class="comp-name schumi">Schumacher</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill schumi" data-width="100"></div></div>
+        <div class="comp-val schumi">7</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Hamilton</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="100"></div></div>
+        <div class="comp-val" style="color:var(--grey-light)">7</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Fangio</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="71"></div></div>
+        <div class="comp-val">5</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Vettel</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="57"></div></div>
+        <div class="comp-val">4</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Prost</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="57"></div></div>
+        <div class="comp-val">4</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Senna</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="43"></div></div>
+        <div class="comp-val">3</div>
+      </div>
+    </div>
+    <div style="margin-top:12px; padding:8px; background:rgba(201,168,76,0.04); border-radius:4px;">
+      <p style="font-size:11px; color:var(--grey)">⚠ Completar/verificar datos con fuentes actualizadas. Verstappen podría aparecer según año de publicación.</p>
+    </div>
+  </div>
+
+  <!-- Final question -->
+  <div class="final-question fade-in">
+    <div class="fq-rule"></div>
+    <p class="fq-text">
+      ¿Fue Schumacher el piloto más 
+      <span class="q">dominante</span> 
+      de la historia de la Fórmula 1?
+    </p>
+    <p class="fq-reflection">
+      Los números dicen que sí. Entre 2000 y 2004, Schumacher no solo ganó: 
+      <strong>redefinió lo que significaba ganar</strong>. Elevó los estándares 
+      del trabajo en fábrica, la preparación física, el análisis de datos y 
+      la cultura de victorias. Ferrari pasó de ser el equipo romántico 
+      que siempre prometía a ser la máquina perfecta que siempre entregaba.
+    </p>
+    <p class="fq-reflection">
+      El debate entre Schumacher, Hamilton, Senna y Fangio 
+      permanecerá abierto para siempre. Pero lo que está fuera de duda 
+      es que la era 2000–2004 representa <strong>el reinado más absoluto 
+      de la historia moderna de la Fórmula 1</strong>.
+    </p>
+    <div class="fq-rule"></div>
+
+    <!-- ESPACIO PARA VISUALIZACIÓN COMPARATIVA ADICIONAL -->
+    <div class="media-placeholder" style="margin-top:24px">
+      <span class="icon">📊</span>
+      <span>VISUALIZACIÓN COMPARATIVA FINAL</span>
+      <span style="opacity:0.5; font-size:9px">Radar chart o scatter plot comparando pilotos históricos</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FOOTER                                                  -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="fb-title">LOS AÑOS DORADOS</div>
+      <div class="fb-sub">MICHAEL SCHUMACHER × FERRARI · 2000–2004</div>
+      <p>Un proyecto de scrollytelling sobre la dinastía más dominante de la historia moderna de la Fórmula 1. Desarrollado como trabajo periodístico de visualización de datos.</p>
+    </div>
+    <div class="footer-col">
+      <h4>CRÉDITOS</h4>
+      <ul>
+        <li><strong>Autores</strong><br><em>[Nombre(s) del equipo]</em></li>
+        <li><strong>Materia</strong><br><em>[Nombre de la materia]</em></li>
+        <li><strong>Institución</strong><br><em>[Nombre]</em></li>
+        <li><strong>Año</strong><br><em>2024 / 2025</em></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>FUENTES DE DATOS</h4>
+      <ul>
+        <li>Ergast Developer API</li>
+        <li>FIA Official Statistics</li>
+        <li>Formula1.com Historical Data</li>
+        <li>StatsF1.com</li>
+        <li><em>[Agregar fuentes adicionales]</em></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-col" style="margin-bottom:32px">
+    <h4>CRÉDITOS MULTIMEDIA</h4>
+    <ul style="list-style:none; display:flex; flex-wrap:wrap; gap:8px 32px;">
+      <li style="font-size:12px; color:var(--grey)">📸 Imágenes: <em>[Getty Images / Red Bull Content Pool / Ferrari Media]</em></li>
+      <li style="font-size:12px; color:var(--grey)">🎬 Videos: <em>[YouTube / archivos propios]</em></li>
+      <li style="font-size:12px; color:var(--grey)">🔊 Audio: <em>[Fuente del sonido del motor]</em></li>
+      <li style="font-size:12px; color:var(--grey)">🗺 Mapa: <em>[OpenStreetMap / Mapbox / Leaflet.js]</em></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 — Template de scrollytelling · Todos los derechos de imágenes pertenecen a sus respectivos propietarios</p>
+    <div class="footer-logo">MSC</div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT                                              -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<script>
+// ─── SPEED LINES ───
+const speedLinesContainer = document.getElementById('speedLines');
+for (let i = 0; i < 12; i++) {
+  const line = document.createElement('span');
+  const top = Math.random() * 100;
+  const width = 100 + Math.random() * 300;
+  const delay = Math.random() * 3;
+  const duration = 1.2 + Math.random() * 1.5;
+  line.style.cssText = `
+    top: ${top}%;
+    width: ${width}px;
+    animation-delay: ${delay}s;
+    animation-duration: ${duration}s;
+  `;
+  speedLinesContainer.appendChild(line);
+}
+
+// ─── RACE RESULT PILLS ───
+const raceData = {
+  '2000': [1,1,2,1,3,2,1,2,1,'DNF',1,2,1,3,'DNF',1,1],
+  '2001': [1,2,1,1,1,'DNF',2,1,1,3,1,1,2,1,'DNF',3,1],
+  '2002': [1,1,2,1,1,1,1,1,1,2,2,1,1,1,3,1,2],
+  '2003': [1,'DNF',2,1,3,2,1,'DNF',2,1,3,1,2,2,3,1],
+  '2004': [1,1,1,1,1,2,1,1,1,1,1,1,3,2,'DNF',1,2,'DNF'],
+};
+
+Object.entries(raceData).forEach(([year, results]) => {
+  const container = document.getElementById(`pills-${year}`);
+  if (!container) return;
+  results.forEach((pos, i) => {
+    const pill = document.createElement('div');
+    pill.className = `race-pill ${pos === 1 ? 'p1' : pos === 2 ? 'p2' : pos === 3 ? 'p3' : pos === 'DNF' ? 'dnf' : 'other'}`;
+    pill.textContent = pos === 'DNF' ? 'X' : pos;
+    pill.title = `Carrera ${i+1}: ${pos === 'DNF' ? 'Abandono' : 'P' + pos}`;
+    container.appendChild(pill);
+  });
+});
+
+// ─── SCROLL PROGRESS & CAR ───
+const progressFill = document.getElementById('progress-fill');
+const carIcon = document.getElementById('car-icon');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = Math.min((scrollTop / docHeight) * 100, 100);
+  progressFill.style.height = pct + '%';
+  carIcon.style.top = pct + '%';
+}, { passive: true });
+
+// ─── NAV DOTS ───
+const navDots = document.querySelectorAll('.nav-dot');
+navDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const targetId = dot.dataset.target;
+    const target = document.getElementById(targetId);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ─── INTERSECTION OBSERVER: FADE IN ───
+const fadeEls = document.querySelectorAll('.fade-in, .tl-item');
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+fadeEls.forEach(el => fadeObserver.observe(el));
+
+// ─── CONTENT CARD REVEALS ───
+const cards = document.querySelectorAll('.content-card');
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+cards.forEach(card => cardObserver.observe(card));
+
+// ─── BAR CHART ANIMATIONS ───
+const barFills = document.querySelectorAll('.bar-fill');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const width = target.dataset.width || '0';
+      target.style.width = width + '%';
+      barObserver.unobserve(target);
+    }
+  });
+}, { threshold: 0.5 });
+barFills.forEach(bar => barObserver.observe(bar));
+
+// ─── COMPARISON BAR ANIMATIONS ───
+const compFills = document.querySelectorAll('.comp-bar-fill');
+const compObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const width = target.dataset.width || '0';
+      target.style.width = width + '%';
+      compObserver.unobserve(target);
+    }
+  });
+}, { threshold: 0.5 });
+compFills.forEach(bar => compObserver.observe(bar));
+
+// ─── VICTORIES BAR CHART ───
+const vcBars = document.querySelectorAll('.vc-bar');
+const vcObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      vcBars.forEach((bar, i) => {
+        setTimeout(() => {
+          bar.style.height = bar.dataset.height;
+          bar.style.transition = 'height 1s cubic-bezier(0.22, 1, 0.36, 1)';
+        }, i * 100);
+      });
+      vcObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const vcChart = document.getElementById('vic-chart');
+if (vcChart) vcObserver.observe(vcChart);
+
+// ─── ACTIVE NAV DOTS ───
+const sections = ['hero','intro','year-2000','year-2001','year-2002','year-2003','year-2004','goat'];
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      const idx = sections.indexOf(id);
+      navDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionObserver.observe(el);
+});
+
+// ─── AUDIO PLAY BUTTON (placeholder interaction) ───
+const playBtn = document.getElementById('audioPlay2004');
+if (playBtn) {
+  let playing = false;
+  playBtn.addEventListener('click', () => {
+    playing = !playing;
+    playBtn.textContent = playing ? '⏸' : '▶';
+    // Conectar con: document.getElementById('motor-f2004').play() / .pause()
+    // Cuando se agregue el audio real
+  });
+}
+
+// ─── TOPNAV BACKGROUND ON SCROLL ───
+const topnav = document.getElementById('topnav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    topnav.style.background = 'rgba(10,10,10,0.97)';
+    topnav.style.borderBottom = '1px solid rgba(201,168,76,0.1)';
+  } else {
+    topnav.style.background = 'linear-gradient(to bottom, rgba(10,10,10,0.95), transparent)';
+    topnav.style.borderBottom = 'none';
+  }
+}, { passive: true });
+
+// ═══════════════ ACTO 1 · EL PESO DE LA SEQUÍA ═══════════════
+(function () {
+  // Campeones de PILOTOS 1979–1999 (la sequía real de Ferrari fue de títulos de pilotos)
+  const champions = [
+    { year: 1979, team: 'Ferrari',  color: '#2a0202', accent: '#ff2b1d' },
+    { year: 1980, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1981, team: 'Brabham',  color: '#11151f', accent: '#9fb2d4' },
+    { year: 1982, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1983, team: 'Brabham',  color: '#11151f', accent: '#9fb2d4' },
+    { year: 1984, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1985, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1986, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1987, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1988, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1989, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1990, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1991, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1992, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1993, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1994, team: 'Benetton', color: '#06241c', accent: '#22c98a' },
+    { year: 1995, team: 'Benetton', color: '#06241c', accent: '#22c98a' },
+    { year: 1996, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1997, team: 'Williams', color: '#06122e', accent: '#f6c700' },
+    { year: 1998, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+    { year: 1999, team: 'McLaren',  color: '#1f1f1f', accent: '#ff6a61' },
+  ];
+  const stripColor = { Ferrari: '#ff1801', Williams: '#1746c4', McLaren: '#dcdcdc', Benetton: '#1f9e6b', Brabham: '#5b6b86' };
+  const phrases = {
+    1979: 'El último título. Jody Scheckter corona a Ferrari.',
+    1980: 'Williams toma el poder.',
+    1984: 'Comienza la era McLaren.',
+    1988: 'Muere Enzo Ferrari.',
+    1990: 'Senna es invencible.',
+    1992: 'Williams aplasta a todos.',
+    1994: 'Un alemán deslumbra… pero con Benetton.',
+    1998: 'Häkkinen y McLaren, otra vez.',
+    1999: '20 años. Cero títulos para Maranello.'
+  };
+
+  const track     = document.getElementById('drought');
+  const yearEl     = document.getElementById('droughtYear');
+  const teamEl     = document.getElementById('droughtTeam');
+  const phraseEl   = document.getElementById('droughtPhrase');
+  const bgEl       = document.getElementById('droughtBg');
+  const blackoutEl = document.getElementById('droughtBlackout');
+  const stripEl    = document.getElementById('droughtStrip');
+  if (!track) return;
+
+  // Construir la tira de datos (una celda por año)
+  champions.forEach(c => {
+    const cell = document.createElement('div');
+    cell.className = 'strip-cell';
+    cell.style.background = stripColor[c.team];
+    cell.title = c.year + ' · ' + c.team;
+    stripEl.appendChild(cell);
+  });
+  const cells = Array.from(stripEl.children);
+
+  const BLACKOUT_AT = 0.88;
+  let current = -1;
+
+  function update() {
+    const rect = track.getBoundingClientRect();
+    const total = track.offsetHeight - window.innerHeight;
+    let p = total > 0 ? (-rect.top) / total : 0;
+    p = Math.max(0, Math.min(1, p));
+
+    blackoutEl.classList.toggle('show', p >= BLACKOUT_AT);
+
+    const pp = Math.min(p / BLACKOUT_AT, 1);
+    const idx = Math.min(champions.length - 1, Math.floor(pp * champions.length));
+
+    cells.forEach((cell, i) => cell.classList.toggle('filled', i <= idx));
+
+    if (idx !== current) {
+      current = idx;
+      const c = champions[idx];
+      yearEl.textContent = c.year;
+      teamEl.textContent = c.team === 'Ferrari' ? 'FERRARI — CAMPEÓN' : c.team.toUpperCase() + ' — CAMPEÓN';
+      teamEl.style.color = c.accent;
+      bgEl.style.background = 'radial-gradient(ellipse at 50% 45%, ' + c.color + ' 0%, #060606 80%)';
+
+      if (phrases[c.year]) {
+        phraseEl.textContent = phrases[c.year];
+        phraseEl.classList.toggle('memoriam', c.year === 1988);
+        phraseEl.classList.remove('flash');
+        void phraseEl.offsetWidth;     // reinicia la animación
+        phraseEl.classList.add('flash');
+      } else {
+        phraseEl.textContent = '';
+        phraseEl.classList.remove('flash');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+// ═══════════════ ACTO 2 · LOS FANTASMAS ANTES DE LA GLORIA ═══════════════
+(function () {
+  const track = document.getElementById('ghosts');
+  const lines = Array.from(document.querySelectorAll('#ghostsLines .ghost-line'));
+  if (!track || !lines.length) return;
+
+  function update() {
+    const rect = track.getBoundingClientRect();
+    const total = track.offsetHeight - window.innerHeight;
+    let p = total > 0 ? (-rect.top) / total : 0;
+    p = Math.max(0, Math.min(1, p));
+    const idx = Math.min(lines.length - 1, Math.floor(p * lines.length));
+    lines.forEach((l, i) => l.classList.toggle('active', i === idx));
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+</script>
+</body>
+</html>
