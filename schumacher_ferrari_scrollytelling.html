@@ -1403,6 +1403,14 @@ footer {
 .ghost-line.active { opacity: 1; transform: translate(-50%, -50%); }
 .ghost-final span { color: var(--red); display: inline-block; margin-top: 6px; }
 
+/* ══════════════════ ACTO 3 · CHAPTER 1: 2000 ══════════════════ */
+.video-2000 {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(100%)
+}
+
 @media (max-width: 900px) {
   .drought-track { height: 500vh; }
   .ghosts-track { height: 440vh; }
@@ -1630,38 +1638,18 @@ footer {
         </p>
         <!-- ESPACIO PARA FOTO/VIDEO DEL GP DE JAPÓN 2000 -->
         <div class="media-placeholder">
-          <span class="icon">🏆</span>
-          <span>FOTO / VIDEO GP JAPÓN 2000</span>
-          <span style="opacity:0.5; font-size:9px">Podio Suzuka · Reemplazar con &lt;img&gt; o &lt;video&gt;</span>
+          <video class="video-2000" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+            <source src="assets/2000.mp4" type="video/mp4">
+        </video>
         </div>
       </div>
 
       <div class="content-card">
         <div class="card-label">RIVALIDAD</div>
-        <div class="card-title">Schumacher vs Häkkinen</div>
-        <p class="card-text">
-          Mika Häkkinen ganó los dos campeonatos anteriores con McLaren-Mercedes. 
-          En 2000, el duelo fue al límite: 2 puntos separaron a ambos pilotos 
-          en el inicio de temporada, pero Schumacher aceleró en la recta final.
-        </p>
 
         <!-- ESPACIO PARA GRÁFICO COMPARATIVO DE PUNTOS -->
         <div class="bar-chart" id="rivalry-chart-2000">
-          <div class="bar-row">
-            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Schumacher</span>
-            <div class="bar-track"><div class="bar-fill" data-width="82"></div></div>
-            <span class="bar-val">108</span>
-          </div>
-          <div class="bar-row">
-            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Häkkinen</span>
-            <div class="bar-track"><div class="bar-fill" data-width="70" style="background:linear-gradient(to right,#555,#888)"></div></div>
-            <span class="bar-val" style="color:var(--grey)">89</span>
-          </div>
-          <div class="bar-row">
-            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Coulthard</span>
-            <div class="bar-track"><div class="bar-fill" data-width="45" style="background:linear-gradient(to right,#444,#666)"></div></div>
-            <span class="bar-val" style="color:var(--grey)">73</span>
-          </div>
+          <div class="flourish-embed flourish-chart" data-src="visualisation/29370029"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29370029/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
         </div>
       </div>
 
