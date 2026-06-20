@@ -476,7 +476,7 @@ section { position: relative; }
 /* ─── STICKY YEAR CHAPTER ─── */
 .chapter {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   min-height: 100vh;
   position: relative;
   border-top: 1px solid rgba(255,255,255,0.04);
@@ -496,8 +496,8 @@ section { position: relative; }
 .chapter-year-bg {
   position: absolute;
   font-family: var(--font-display);
-  font-size: 300px;
-  color: rgba(255,255,255,0.02);
+  font-size: 400px;
+  color: rgba(255,255,255,0.01);
   bottom: -40px;
   left: -20px;
   line-height: 1;
@@ -542,7 +542,7 @@ section { position: relative; }
   line-height: 1.8;
   color: var(--grey-light);
   font-weight: 300;
-  max-width: 380px;
+  max-width: 800px;
   margin-bottom: 32px;
 }
 
@@ -554,13 +554,14 @@ section { position: relative; }
   margin-bottom: 24px;
 }
 .stat-pill {
-  background: var(--black-card);
+  /*background: var(--black-card);
   border: 1px solid rgba(201,168,76,0.15);
-  border-radius: 4px;
+  border-radius: 4px;*/
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  text-align: center;
 }
 .stat-pill .s-val {
   font-family: var(--font-display);
@@ -584,8 +585,8 @@ section { position: relative; }
   gap: 6px;
 }
 .race-pill {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -622,8 +623,8 @@ section { position: relative; }
 
 /* Content cards */
 .content-card {
-  background: var(--black-card);
-  border: 1px solid rgba(255,255,255,0.06);
+  /*background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);*/
   border-radius: 6px;
   padding: 24px;
   opacity: 0;
@@ -673,8 +674,8 @@ section { position: relative; }
 .media-placeholder {
   width: 100%;
   aspect-ratio: 16/9;
-  border: 1px dashed rgba(201,168,76,0.2);
-  border-radius: 4px;
+  /*border: 1px dashed rgba(201,168,76,0.2);*/
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1410,7 +1411,8 @@ footer {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: brightness(100%)
+  filter: brightness(100%);
+  border-radius: 6px;
 }
 
 @media (max-width: 900px) {
@@ -1580,7 +1582,7 @@ footer {
   <!-- ─── 2000 ─── -->
   <article class="chapter" id="year-2000">
     <div class="chapter-sticky">
-      <div class="chapter-year-bg">2000</div>
+      <!--<div class="chapter-year-bg">2000</div>-->
       
       <div class="starting-lights">
         <div class="light"></div>
@@ -1627,7 +1629,6 @@ footer {
       </div>
 
       <div style="margin-bottom:16px">
-        <div class="card-label">POSICIONES POR CARRERA</div>
         <div class="race-pills" id="pills-2000">
           <!-- Se generan con JS -->
         </div>
@@ -1654,7 +1655,10 @@ footer {
 
       <div class="content-card">
         <div class="card-label">RIVALIDAD</div>
-
+        <div class="card-title">Schumacher vs. Häkkinen</div>
+        <p class="card-text">
+          La pelea la ganó, con diferencia, el alemán.
+        </p>
         <!-- ESPACIO PARA GRÁFICO COMPARATIVO DE PUNTOS -->
         <div class="bar-chart" id="rivalry-chart-2000">
           <div class="flourish-embed flourish-chart" data-src="visualisation/29370029"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29370029/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
@@ -1663,14 +1667,18 @@ footer {
 
       <div class="content-card quote-card">
         <p class="quote-text">
-          "Esto significa todo para mí. Trabajé toda mi carrera para llegar 
-          a este momento con Ferrari. Este es el equipo con el que soñé ganar."
+          "The most emotional one definitely is Suzuka in 2000 with Ferrari. Twenty-one years with no championship for Ferrari. Four years for myself, fighting to achieve it and finally in 2000, Suzuka, winning an exceptional race to win the great championship."
         </p>
-        <div class="quote-attr">— MICHAEL SCHUMACHER · GP JAPÓN 2000</div>
+        <div class="quote-attr">— MICHAEL SCHUMACHER · Eligiendo el GP de JAPÓN en el 2000 como su carrera más emotiva</div>
         <!-- NOTA: reemplazar con cita real verificada -->
       </div>
 
       <div class="content-card">
+        <div class="card-label">PASO POR PASO</div>
+        <div class="card-title">Al final, reina el Kaiser</div>
+        <p class="card-text">
+          Mika Häkkinen ganó los dos campeonatos anteriores con McLaren-Mercedes. En 2000, el duelo fue al límite: 2 puntos separaron a ambos pilotos en el inicio de temporada, pero Schumacher aceleró en la recta final.
+        </p>
         <div class="flourish-embed flourish-chart" data-src="visualisation/29371603"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29371603/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
       </div>
 
@@ -1690,7 +1698,7 @@ footer {
   <!-- ─── 2001 ─── -->
   <article class="chapter" id="year-2001">
     <div class="chapter-sticky">
-      <div class="chapter-year-bg">2001</div>
+      <!--<div class="chapter-year-bg">2001</div>-->
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -1736,8 +1744,7 @@ footer {
         </div>
       </div>
 
-      <div style="margin-bottom:16px">
-        <div class="card-label">POSICIONES POR CARRERA</div>
+      <div style="margin-bottom:16px; align-content: center;">
         <div class="race-pills" id="pills-2001"></div>
       </div>
     </div>
@@ -1754,7 +1761,7 @@ footer {
         </p>
         <!-- ESPACIO PARA IMAGEN DEL F2001 -->
         <div class="media-placeholder">
-          <iframe class="f2001" title="Ferrari F2001 - Tribute to Michael Schumacher" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1597a6a00d164f5ca8852ad40e96a89b/embed?ui_theme=dark"> </iframe> </div>
+          <iframe class="f2001" style="border-radius: 6px;" title="Ferrari F2001 - Tribute to Michael Schumacher" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/1597a6a00d164f5ca8852ad40e96a89b/embed?ui_theme=dark"> </iframe> </div>
       </div>
 
       <div class="content-card">
@@ -1808,7 +1815,7 @@ footer {
   <!-- ─── 2002 ─── -->
   <article class="chapter" id="year-2002">
     <div class="chapter-sticky">
-      <div class="chapter-year-bg">2002</div>
+      <!--<div class="chapter-year-bg">2002</div>-->
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -1855,7 +1862,6 @@ footer {
       </div>
 
       <div style="margin-bottom:16px">
-        <div class="card-label">POSICIONES POR CARRERA</div>
         <div class="race-pills" id="pills-2002"></div>
       </div>
     </div>
@@ -1924,7 +1930,7 @@ footer {
   <!-- ─── 2003 ─── -->
   <article class="chapter" id="year-2003">
     <div class="chapter-sticky">
-      <div class="chapter-year-bg">2003</div>
+      <!--<div class="chapter-year-bg">2003</div>-->
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -1971,7 +1977,6 @@ footer {
       </div>
 
       <div style="margin-bottom:16px">
-        <div class="card-label">POSICIONES POR CARRERA</div>
         <div class="race-pills" id="pills-2003"></div>
       </div>
     </div>
@@ -1997,23 +2002,7 @@ footer {
           más campeonatos en la historia de la Fórmula 1, superando 
           la marca de 5 que compartía con Juan Manuel Fangio desde 2002.
         </p>
-        <div class="bar-chart">
-          <div class="bar-row">
-            <span class="bar-label" style="font-size:10px;width:80px;text-align:left;color:var(--gold)">Schumacher</span>
-            <div class="bar-track"><div class="bar-fill" data-width="86"></div></div>
-            <span class="bar-val">6★</span>
-          </div>
-          <div class="bar-row">
-            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Fangio</span>
-            <div class="bar-track"><div class="bar-fill" data-width="71" style="background:linear-gradient(to right,#555,#888)"></div></div>
-            <span class="bar-val" style="color:var(--grey)">5★</span>
-          </div>
-          <div class="bar-row">
-            <span class="bar-label" style="font-size:10px;width:80px;text-align:left">Räikkönen</span>
-            <div class="bar-track"><div class="bar-fill" data-width="63" style="background:rgba(255,255,255,0.1)"></div></div>
-            <span class="bar-val" style="color:var(--grey)">91p</span>
-          </div>
-        </div>
+        <div class="flourish-embed flourish-chart" data-src="visualisation/29386607"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29386607/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
       </div>
 
       <div class="content-card quote-card">
@@ -2041,7 +2030,7 @@ footer {
   <!-- ─── 2004 ─── -->
   <article class="chapter" id="year-2004">
     <div class="chapter-sticky">
-      <div class="chapter-year-bg">2004</div>
+      <!--<div class="chapter-year-bg">2004</div>-->
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -2088,7 +2077,6 @@ footer {
       </div>
 
       <div style="margin-bottom:16px">
-        <div class="card-label">POSICIONES POR CARRERA</div>
         <div class="race-pills" id="pills-2004"></div>
       </div>
     </div>
@@ -2190,26 +2178,87 @@ footer {
   <div class="viz-grid" style="max-width:1200px; margin:0 auto;">
     
     <!-- Victorias por año -->
-  <div class="viz-card fade-in">
-    <div class="flourish-embed flourish-chart" data-src="visualisation/29363176">
-      <script src="https://public.flourish.studio/resources/embed.js"></script>
-      <noscript><img src="https://public.flourish.studio/visualisation/29363176/thumbnail" width="100%" alt="chart visualization" /></noscript>
+    <div class="viz-card fade-in">
+      <div class="viz-label">COMPARATIVA ANUAL</div>
+      <div class="viz-title">Victorias por temporada</div>
+      <div class="victories-chart" id="vic-chart">
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="62%">
+            <span class="vc-val">9</span>
+          </div>
+          <div class="vc-year">2000</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="62%">
+            <span class="vc-val">9</span>
+          </div>
+          <div class="vc-year">2001</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="76%">
+            <span class="vc-val">11</span>
+          </div>
+          <div class="vc-year">2002</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="41%">
+            <span class="vc-val">6</span>
+          </div>
+          <div class="vc-year">2003</div>
+        </div>
+        <div class="vc-bar-wrap">
+          <div class="vc-bar active" style="height:0%" data-height="90%">
+            <span class="vc-val">13</span>
+          </div>
+          <div class="vc-year">2004</div>
+        </div>
+      </div>
     </div>
-  </div>
 
     <!-- Puntos por año -->
-  <div class="viz-card fade-in">
-    <div class="flourish-embed flourish-chart" data-src="visualisation/29383749">
-      <script src="https://public.flourish.studio/resources/embed.js"></script>
-      <noscript><img src="https://public.flourish.studio/visualisation/29383749/thumbnail" width="100%" alt="chart visualization" /></noscript>
+    <div class="viz-card fade-in">
+      <div class="viz-label">EVOLUCIÓN DE PUNTOS</div>
+      <div class="viz-title">Puntos por temporada</div>
+      <div class="bar-chart" style="margin-top:16px">
+        <div class="bar-row">
+          <span class="bar-label">2000</span>
+          <div class="bar-track"><div class="bar-fill" data-width="73"></div></div>
+          <span class="bar-val">108</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2001</span>
+          <div class="bar-track"><div class="bar-fill" data-width="83"></div></div>
+          <span class="bar-val">123</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2002</span>
+          <div class="bar-track"><div class="bar-fill" data-width="97"></div></div>
+          <span class="bar-val">144</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2003</span>
+          <div class="bar-track"><div class="bar-fill" data-width="63"></div></div>
+          <span class="bar-val">93</span>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">2004</span>
+          <div class="bar-track"><div class="bar-fill" data-width="100"></div></div>
+          <span class="bar-val">148</span>
+        </div>
+      </div>
     </div>
-  </div>
 
-    <!-- Mapamundi (Flourish) -->
+    <!-- Mapamundi placeholder -->
     <div class="viz-card full fade-in">
-      <div class="flourish-embed flourish-map" data-src="visualisation/29385465">
-        <script src="https://public.flourish.studio/resources/embed.js"></script>
-        <noscript><img src="https://public.flourish.studio/visualisation/29385465/thumbnail" width="100%" alt="map visualization" /></noscript>
+      <div class="viz-label">GRANDES PREMIOS 2000–2004</div>
+      <div class="viz-title">El mundo como escenario</div>
+      <div class="map-placeholder">
+        <span class="icon">🗺</span>
+        <span>MAPA MUNDIAL DE GRANDES PREMIOS</span>
+        <span style="opacity:0.5; font-size:9px; text-align:center; max-width:400px">
+          Completar con biblioteca de mapas (Leaflet.js, D3-geo, Mapbox).<br>
+          Pintar circuitos donde Schumacher ganó en rojo · resto en gris.
+        </span>
       </div>
     </div>
 
@@ -2265,9 +2314,41 @@ footer {
 
   <!-- Comparison -->
   <div class="comparison-section fade-in">
-    <div class="flourish-embed flourish-chart" data-src="visualisation/29395199">
-      <script src="https://public.flourish.studio/resources/embed.js"></script>
-      <noscript><img src="https://public.flourish.studio/visualisation/29395199/thumbnail" width="100%" alt="chart visualization" /></noscript>
+    <div class="comparison-title">Campeonatos mundiales: los más grandes</div>
+    <div class="comparison-grid">
+      <div class="comp-row">
+        <div class="comp-name schumi">Schumacher</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill schumi" data-width="100"></div></div>
+        <div class="comp-val schumi">7</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Hamilton</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="100"></div></div>
+        <div class="comp-val" style="color:var(--grey-light)">7</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Fangio</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="71"></div></div>
+        <div class="comp-val">5</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Vettel</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="57"></div></div>
+        <div class="comp-val">4</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Prost</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="57"></div></div>
+        <div class="comp-val">4</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-name">Senna</div>
+        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="43"></div></div>
+        <div class="comp-val">3</div>
+      </div>
+    </div>
+    <div style="margin-top:12px; padding:8px; background:rgba(201,168,76,0.04); border-radius:4px;">
+      <p style="font-size:11px; color:var(--grey)">⚠ Completar/verificar datos con fuentes actualizadas. Verstappen podría aparecer según año de publicación.</p>
     </div>
   </div>
 
