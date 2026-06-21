@@ -493,16 +493,22 @@ section { position: relative; }
   overflow: hidden;
 }
 
-.chapter-year-bg {
+.sch-corner-photo {
   position: absolute;
-  font-family: var(--font-display);
-  font-size: 400px;
-  color: rgba(255,255,255,0.01);
-  bottom: -40px;
-  left: -20px;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
+  bottom: 0;
+  max-height: 500px;
+  max-width: 100%; /* Controla el ancho de la foto para que no tape los textos */
+  height: auto;
+  pointer-events: none; /* Evita que interfiera si el usuario hace clic en esa zona */
+  z-index: 1;
+  
+  /* El truco para volverla blanco y negro directo en CSS */
+  filter: grayscale(100%); 
+  
+  /* Opcional: le da una leve transparencia para que se fusione con el fondo negro */
+  opacity: 0.3;
+
+  z-index: -1;
 }
 
 .chapter-badge {
@@ -1582,7 +1588,7 @@ footer {
   <!-- ─── 2000 ─── -->
   <article class="chapter" id="year-2000">
     <div class="chapter-sticky">
-      <!--<div class="chapter-year-bg">2000</div>-->
+      <img class="sch-corner-photo" src="assets/sch-2000.png">
       
       <div class="starting-lights">
         <div class="light"></div>
@@ -1698,7 +1704,7 @@ footer {
   <!-- ─── 2001 ─── -->
   <article class="chapter" id="year-2001">
     <div class="chapter-sticky">
-      <!--<div class="chapter-year-bg">2001</div>-->
+      <img class="sch-corner-photo" src="assets/sch-2001.png" style="padding-left: 120px; height: 475px">
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -1815,7 +1821,7 @@ footer {
   <!-- ─── 2002 ─── -->
   <article class="chapter" id="year-2002">
     <div class="chapter-sticky">
-      <!--<div class="chapter-year-bg">2002</div>-->
+      <img class="sch-corner-photo" src="assets/sch-2002.png" style="padding-left: 100px;">
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -1930,7 +1936,7 @@ footer {
   <!-- ─── 2003 ─── -->
   <article class="chapter" id="year-2003">
     <div class="chapter-sticky">
-      <!--<div class="chapter-year-bg">2003</div>-->
+      <img class="sch-corner-photo" src="assets/sch-2003.png" style="padding-left: 100px;">
 
       <div class="starting-lights">
         <div class="light"></div>
@@ -2030,7 +2036,7 @@ footer {
   <!-- ─── 2004 ─── -->
   <article class="chapter" id="year-2004">
     <div class="chapter-sticky">
-      <!--<div class="chapter-year-bg">2004</div>-->
+      <img class="sch-corner-photo" src="assets/sch-2004.png">
 
       <div class="starting-lights">
         <div class="light"></div>
