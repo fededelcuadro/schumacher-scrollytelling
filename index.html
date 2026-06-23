@@ -1608,6 +1608,50 @@ footer {
   height: 100%;
 }
 
+
+/* ─── FIX FLOURISH: que los gráficos ocupen todo el espacio ─── */
+.viz-card.chart-full-height {
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+}
+
+.viz-card.chart-full-height .flourish-embed {
+  width: 100% !important;
+  flex: 1;
+  min-height: 360px;
+}
+
+.viz-card.chart-full-height .flourish-embed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 360px !important;
+  display: block;
+}
+
+/* Último gráfico radar */
+.final-radar-wrap {
+  width: 100%;
+  min-height: 520px;
+  margin-top: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(201,168,76,0.02);
+}
+
+.final-radar-wrap .flourish-embed {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 520px;
+}
+
+.final-radar-wrap .flourish-embed iframe {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 520px !important;
+  display: block;
+}
+
 </style>
 </head>
 <body>
@@ -2399,88 +2443,18 @@ footer {
   <div class="viz-grid" style="max-width:1200px; margin:0 auto;">
     
     <!-- Victorias por año -->
-    <div class="viz-card fade-in">
-      <div class="viz-label">COMPARATIVA ANUAL</div>
-      <div class="viz-title">Victorias por temporada</div>
-      <div class="victories-chart" id="vic-chart">
-        <div class="vc-bar-wrap">
-          <div class="vc-bar active" style="height:0%" data-height="62%">
-            <span class="vc-val">9</span>
-          </div>
-          <div class="vc-year">2000</div>
-        </div>
-        <div class="vc-bar-wrap">
-          <div class="vc-bar active" style="height:0%" data-height="62%">
-            <span class="vc-val">9</span>
-          </div>
-          <div class="vc-year">2001</div>
-        </div>
-        <div class="vc-bar-wrap">
-          <div class="vc-bar active" style="height:0%" data-height="76%">
-            <span class="vc-val">11</span>
-          </div>
-          <div class="vc-year">2002</div>
-        </div>
-        <div class="vc-bar-wrap">
-          <div class="vc-bar active" style="height:0%" data-height="41%">
-            <span class="vc-val">6</span>
-          </div>
-          <div class="vc-year">2003</div>
-        </div>
-        <div class="vc-bar-wrap">
-          <div class="vc-bar active" style="height:0%" data-height="90%">
-            <span class="vc-val">13</span>
-          </div>
-          <div class="vc-year">2004</div>
-        </div>
-      </div>
+    <div class="viz-card fade-in chart-full-height">
+      <div class="flourish-embed flourish-chart" data-src="visualisation/29363176"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29363176/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
     </div>
 
     <!-- Puntos por año -->
-    <div class="viz-card fade-in">
-      <div class="viz-label">EVOLUCIÓN DE PUNTOS</div>
-      <div class="viz-title">Puntos por temporada</div>
-      <div class="bar-chart" style="margin-top:16px">
-        <div class="bar-row">
-          <span class="bar-label">2000</span>
-          <div class="bar-track"><div class="bar-fill" data-width="73"></div></div>
-          <span class="bar-val">108</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">2001</span>
-          <div class="bar-track"><div class="bar-fill" data-width="83"></div></div>
-          <span class="bar-val">123</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">2002</span>
-          <div class="bar-track"><div class="bar-fill" data-width="97"></div></div>
-          <span class="bar-val">144</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">2003</span>
-          <div class="bar-track"><div class="bar-fill" data-width="63"></div></div>
-          <span class="bar-val">93</span>
-        </div>
-        <div class="bar-row">
-          <span class="bar-label">2004</span>
-          <div class="bar-track"><div class="bar-fill" data-width="100"></div></div>
-          <span class="bar-val">148</span>
-        </div>
-      </div>
+    <div class="viz-card fade-in chart-full-height">
+      <div class="flourish-embed flourish-chart" data-src="visualisation/29383749"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29383749/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
     </div>
 
     <!-- Mapamundi placeholder -->
     <div class="viz-card full fade-in">
-      <div class="viz-label">GRANDES PREMIOS 2000–2004</div>
-      <div class="viz-title">El mundo como escenario</div>
-      <div class="map-placeholder">
-        <span class="icon">🗺</span>
-        <span>MAPA MUNDIAL DE GRANDES PREMIOS</span>
-        <span style="opacity:0.5; font-size:9px; text-align:center; max-width:400px">
-          Completar con biblioteca de mapas (Leaflet.js, D3-geo, Mapbox).<br>
-          Pintar circuitos donde Schumacher ganó en rojo · resto en gris.
-        </span>
-      </div>
+      <div class="flourish-embed flourish-map" data-src="visualisation/29385465"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29385465/thumbnail" width="100%" alt="map visualization" /></noscript></div>
     </div>
 
     <!-- Chart race placeholder -->
@@ -2535,42 +2509,7 @@ footer {
 
   <!-- Comparison -->
   <div class="comparison-section fade-in">
-    <div class="comparison-title">Campeonatos mundiales: los más grandes</div>
-    <div class="comparison-grid">
-      <div class="comp-row">
-        <div class="comp-name schumi">Schumacher</div>
-        <div class="comp-bar-track"><div class="comp-bar-fill schumi" data-width="100"></div></div>
-        <div class="comp-val schumi">7</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-name">Hamilton</div>
-        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="100"></div></div>
-        <div class="comp-val" style="color:var(--grey-light)">7</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-name">Fangio</div>
-        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="71"></div></div>
-        <div class="comp-val">5</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-name">Vettel</div>
-        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="57"></div></div>
-        <div class="comp-val">4</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-name">Prost</div>
-        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="57"></div></div>
-        <div class="comp-val">4</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-name">Senna</div>
-        <div class="comp-bar-track"><div class="comp-bar-fill other" data-width="43"></div></div>
-        <div class="comp-val">3</div>
-      </div>
-    </div>
-    <div style="margin-top:12px; padding:8px; background:rgba(201,168,76,0.04); border-radius:4px;">
-      <p style="font-size:11px; color:var(--grey)">⚠ Completar/verificar datos con fuentes actualizadas. Verstappen podría aparecer según año de publicación.</p>
-    </div>
+    <div class="flourish-embed flourish-chart" data-src="visualisation/29395199"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29395199/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
   </div>
 
   <!-- Final question -->
@@ -2597,10 +2536,8 @@ footer {
     <div class="fq-rule"></div>
 
     <!-- ESPACIO PARA VISUALIZACIÓN COMPARATIVA ADICIONAL -->
-    <div class="media-placeholder" style="margin-top:24px">
-      <span class="icon">📊</span>
-      <span>VISUALIZACIÓN COMPARATIVA FINAL</span>
-      <span style="opacity:0.5; font-size:9px">Radar chart o scatter plot comparando pilotos históricos</span>
+    <div class="final-radar-wrap">
+      <div class="flourish-embed flourish-radar" data-src="visualisation/29412880"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29412880/thumbnail" width="100%" alt="radar visualization" /></noscript></div>
     </div>
   </div>
 </section>
