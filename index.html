@@ -1652,6 +1652,41 @@ footer {
   display: block;
 }
 
+/* ─── FIX ESPECÍFICO: gráfico de victorias (evita que se corte el eje X) ─── */
+.viz-card.chart-victorias {
+  min-height: 590px !important;
+  padding: 28px 28px 64px !important;
+  overflow: visible !important;
+}
+
+.viz-card.chart-victorias .flourish-embed {
+  width: 100% !important;
+  height: 500px !important;
+  min-height: 500px !important;
+  flex: none !important;
+  overflow: visible !important;
+}
+
+.viz-card.chart-victorias .flourish-embed iframe {
+  width: 100% !important;
+  height: 500px !important;
+  min-height: 500px !important;
+  display: block !important;
+}
+
+@media (max-width: 900px) {
+  .viz-card.chart-victorias {
+    min-height: 520px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .viz-card.chart-victorias .flourish-embed,
+  .viz-card.chart-victorias .flourish-embed iframe {
+    height: 440px !important;
+    min-height: 440px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2449,7 +2484,7 @@ footer {
   <div class="viz-grid" style="max-width:1200px; margin:0 auto;">
     
     <!-- Victorias por año -->
-    <div class="viz-card fade-in chart-full-height">
+    <div class="viz-card fade-in chart-full-height chart-victorias">
       <div class="flourish-embed flourish-chart" data-src="visualisation/29363176"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29363176/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
     </div>
 
